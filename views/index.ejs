@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Meme Dosage</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: black;
+            color: rgb(201, 201, 201);
+        }
+
+        .container {
+            width: 70%;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .container h1 {
+            font-size: 64px;
+            padding: 2em 0;
+        }
+
+        .media {
+            margin: 4em 0;
+            min-width: 50%;
+            max-width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Meme Dosage</h1>
+        <% memes.forEach(function(meme) { %>
+            <% if (meme.indexOf('.jpg') !=-1){ %>
+                <img class="media" src="<%= meme %> " alt="">
+                <% } %>
+                    <% if (meme.indexOf('.gif') !=-1) { %>
+                        <video class="media" autoplay loop controls>
+                            <source src="<%= meme  %>" type="video/webm">
+
+                            <source src="<%= meme  %>" type="video/mp4">
+                            <source src="<%= meme  %>" type="video/ogg">
+                        </video>
+                        <% } %>
+                            <% }); %>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const videos = document.querySelectorAll('video');
+            videos.forEach(vid => {
+                vid.play();
+            })
+        })
+
+    </script>
+</body>
+
+</html>
